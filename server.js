@@ -1,31 +1,24 @@
 require("dotenv").config();
-const { Sequelize } = require("sequelize");
 
 const app = require("./app");
+const sequelize = require("./config/db");
 
-const sequelize = new Sequelize({
-	dialect: "mysql",
-	database: process.env.DB_NAME,
-	username: process.env.DB_USERNAME,
-	password: process.env.DB_PASSWORD,
-	host: process.env.DB_HOST,
-	port: process.env.DB_PORT,
-});
-
-const initializeDatabase = async () => {
+const startServer = async () => {
 	try {
 		await sequelize.authenticate();
-		console.log("Connection has been established successfully.");
+		console.log("✅ Database connected successfully.");
+
+		// Sync models (optional)
+		await sequelize.sync();
+		console.log("✅ Models synchronized.");
+
+		const { port } = process.env;
+		app.listen(port, () => {
+			console.log(`🚀 Server is running at http://localhost:${port}`);
+		});
 	} catch (error) {
-		console.error("Unable to connect to the database:", error);
+		console.error("❌ Database connection failed:", error);
 	}
 };
 
-initializeDatabase();
-
-const { port } = process.env;
-app.listen(port, () => {
-	console.log(`Server is running on http://localhost:${port}`);
-});
-
-module.exports = sequelize;
+startServer();
