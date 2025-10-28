@@ -4,6 +4,7 @@ const app = express();
 // MIDDLEWARE
 app.use(express.json());
 
+// Routes
 app.get("/", (_, res) => {
 	res.send("Hello World!");
 });
