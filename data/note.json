@@ -1,0 +1,82 @@
+[
+	{
+		"id": 1,
+		"title": "Initial App Setup & Configuration",
+		"content": "Completed basic authentication flows (login/logout). Configured CORS policy for local development environment. Ready to integrate Firestore for live testing.",
+		"colour": "blue",
+		"createdAt": "2024-10-15T09:30:00Z",
+		"updatedAt": "2024-10-16T11:00:00Z"
+	},
+	{
+		"id": 2,
+		"title": "Real-Time Sync Feature - Alpha Test Report",
+		"content": "Tested real-time cursor positioning with 5 users. Bug found: latency spikes when large paragraphs are pasted. Requires optimization of WebSockets payload size.",
+		"colour": "red",
+		"createdAt": "2024-10-16T14:45:00Z",
+		"updatedAt": "2024-10-17T08:20:00Z"
+	},
+	{
+		"id": 3,
+		"title": "Marketing Strategy Brainstorm: Q4",
+		"content": "Focus on developer community outreach. Target subreddits and tech forums. Prepare a simple demo video showcasing the document history feature.",
+		"colour": "green",
+		"createdAt": "2024-10-17T17:00:00Z",
+		"updatedAt": "2024-10-17T17:00:00Z"
+	},
+	{
+		"id": 4,
+		"title": "Database Schema Review: User Permissions",
+		"content": "Verified many-to-many relationship for document sharing. Added 'owner_id' to the 'notes' table. Ready for pull request and peer review.",
+		"colour": "yellow",
+		"createdAt": "2024-10-18T10:15:00Z",
+		"updatedAt": "2024-10-18T10:15:00Z"
+	},
+	{
+		"id": 5,
+		"title": "Future Feature Idea: Markdown Support",
+		"content": "Investigate implementing a rich text editor that natively supports Markdown formatting and rendering for developers.",
+		"colour": "blue",
+		"createdAt": "2024-10-19T11:50:00Z",
+		"updatedAt": "2024-10-20T09:00:00Z"
+	},
+	{
+		"id": 6,
+		"title": "Design System: Typography & Color Palette",
+		"content": "Finalized primary font stack (Inter, sans-serif) and defined the 5-color palette for note categorization (Red, Blue, Green, Yellow, Gray).",
+		"colour": "green",
+		"createdAt": "2024-10-20T13:00:00Z",
+		"updatedAt": "2024-10-20T13:00:00Z"
+	},
+	{
+		"id": 7,
+		"title": "To-Do: Clean up unused CSS files",
+		"content": "Remove deprecated styling from the document viewer component. Consolidate utility classes using Tailwind CSS for better performance.",
+		"colour": "red",
+		"createdAt": "2024-10-21T08:40:00Z",
+		"updatedAt": "2024-10-21T08:40:00Z"
+	},
+	{
+		"id": 8,
+		"title": "User Feedback Summary - Week 1",
+		"content": "Top request: Drag-and-drop ordering in the document list. Second request: Dark mode toggle. Prioritize drag-and-drop for Sprint 2.",
+		"colour": "yellow",
+		"createdAt": "2024-10-22T16:20:00Z",
+		"updatedAt": "2024-10-22T16:20:00Z"
+	},
+	{
+		"id": 9,
+		"title": "Dependency Audit & Security Check",
+		"content": "Updated all major npm packages (React, Firebase). Ran vulnerability scanner (Snyk) with no critical vulnerabilities found.",
+		"colour": "blue",
+		"createdAt": "2024-10-23T10:00:00Z",
+		"updatedAt": "2024-10-23T10:00:00Z"
+	},
+	{
+		"id": 10,
+		"title": "Deployment Pipeline Update",
+		"content": "Successfully migrated CI/CD to use GitHub Actions for automated testing and staging deployment on every push to the 'main' branch.",
+		"colour": "green",
+		"createdAt": "2024-10-24T12:30:00Z",
+		"updatedAt": "2024-10-24T14:00:00Z"
+	}
+]
