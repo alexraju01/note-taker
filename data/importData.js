@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
+const morgan = require('morgan');
 
 const sequelize = require("../config/db");
 const Note = require("../models/noteModel");
@@ -12,6 +13,7 @@ const importData = async () => {
 	try {
 		await sequelize.sync({ force: true });
 		await Note.bulkCreate(notes);
+		console.log(await Note.bulkCreate(notes));
 		console.log("Data successfully imported");
 		process.exit();
 	} catch (error) {

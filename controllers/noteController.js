@@ -1,6 +1,14 @@
 const Note = require("../models/noteModel");
 
 exports.getAllNotes = async (_, res) => {
-	const notes = await Note.findAll();
-	res.status(200).json({ status: "success", results: notes.length, data: notes });
+	try {
+		const notes = await Note.findAll();
+		res.status(200).json({ status: "success", results: notes.length, data: notes });
+	} catch (err) {
+		res.status(404),
+			json({
+				status: "fail",
+				message: `${err} kjdhfksjdfh`,
+			});
+	}
 };
