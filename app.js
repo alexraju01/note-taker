@@ -15,11 +15,11 @@ if (process.env.NODE_ENV === "development") {
 
 app.use("/api/v1/notes", notesRouter);
 
-app.get("/{*splat}", async (req, res, next) => {
+// Catches all undefined routes
+app.get("/*splat", async (req, res, next) => {
 	next(new AppError(`can't find the ${req.originalUrl} on the this server`));
 });
 
 app.use(globalErrorHandler);
-// app.use(globalErrorHandler);
 
 module.exports = app;
