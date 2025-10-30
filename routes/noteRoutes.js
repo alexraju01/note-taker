@@ -3,6 +3,8 @@ const noteController = require("../controllers/noteController");
 const router = express.Router();
 
 router.route("/").get(noteController.getAllNotes);
+
+
 router
 	.route("/:id")
 	.get(noteController.getOne)

@@ -4,9 +4,13 @@ const notesRouter = require("./routes/noteRoutes");
 const morgan = require("morgan");
 const AppError = require("./uilts/appError");
 const globalErrorHandler = require("./controllers/errorController");
+const cors = require("cors");
 
 // MIDDLEWARE
 app.use(express.json());
+
+app.use(cors());
+app.use(express.static("public"));
 
 // Development Logging
 if (process.env.NODE_ENV === "development") {
