@@ -1,61 +1,124 @@
-/* General Layout */
-.note-grid {
-	display: grid; /* Use a grid for flexible layout */
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
-	gap: 20px;
-	padding: 20px;
+:root {
+	--bg-dark: #0f1117;
+	--bg-card: #1a1d27;
+	--text-primary: #f8f9fb;
+	--text-secondary: #9da3b4;
+	--radius: 16px;
+	--transition: 0.25s ease;
 }
 
-/* Base Card Style */
-.note-card {
-	background-color: #ffffff;
-	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	padding: 15px;
-	transition: transform 0.2s;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+body {
+	font-family: "Inter", system-ui, sans-serif;
+	background-color: var(--bg-dark);
+	color: var(--text-primary);
+	padding: 32px;
+	display: flex;
+	justify-content: center;
+}
+
+.notes-dashboard {
+	width: 100%;
+	max-width: 1000px;
+}
+
+/* ----- Header Section ----- */
+.notes-header {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 32px;
+}
+
+.notes-header h1 {
+	font-size: 1.75rem;
+	font-weight: 600;
+}
+
+/* ----- Search Bar ----- */
+.search-container {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.search-container input {
+	width: 100%;
+	padding: 12px 10px 12px 16px;
+	background-color: var(--bg-card);
+	border: 1px solid #2b2f3c;
+	border-radius: var(--radius);
+	color: var(--text-secondary);
+	font-size: 1rem;
+	transition: border var(--transition), box-shadow var(--transition);
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	color: var(--text-secondary);
 	cursor: pointer;
-	border-left: 5px solid transparent; /* The key for the accent color */
+	font-size: 1.3rem;
+	margin-left: 10px;
 }
 
-/* Hover effect for interaction */
+.search-container input:focus {
+	border-color: #3a82f7;
+	box-shadow: 0 0 0 2px rgba(58, 130, 247, 0.3);
+}
+
+.search-icon {
+	position: absolute;
+	right: 14px;
+	color: var(--text-secondary);
+	pointer-events: none;
+}
+
+/* ----- Notes Grid ----- */
+#note-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 24px;
+}
+
+.note-card {
+	background: var(--bg-card);
+	border-radius: var(--radius);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+	transition: transform var(--transition), box-shadow var(--transition);
+}
+
 .note-card:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+	transform: translateY(-6px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* Header and Content Styles */
 .note-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 8px;
-}
-.note-card h3 {
-	margin: 0;
-	font-size: 1.1em;
-	color: #333;
-}
-.note-date {
-	font-size: 0.8em;
-	color: #888;
-}
-.note-content-snippet {
-	font-size: 0.9em;
-	color: #666;
-	margin: 0;
-	/* You would use JavaScript to ensure this content is truncated */
 }
 
-/* Applying Theme Colors to Accent Bar */
-.note-blue {
-	border-left-color: #3498db; /* A strong blue */
+.note-header h3 {
+	font-size: 1.1rem;
+	font-weight: 600;
 }
-.note-red {
-	border-left-color: #e74c3c; /* A warning red */
+
+.note-date {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
 }
-.note-green {
-	border-left-color: #2ecc71; /* A success green */
-}
-.note-yellow {
-	border-left-color: #f1c40f; /* A caution yellow */
+
+.note-content-snippet {
+	color: var(--text-secondary);
+	line-height: 1.5;
+	font-size: 0.95rem;
 }
