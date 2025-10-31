@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
-const morgan = require('morgan');
+const morgan = require("morgan");
 
 const sequelize = require("../config/db");
 const Note = require("../models/noteModel");
