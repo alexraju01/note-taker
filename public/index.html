@@ -3,13 +3,37 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>Hello world</h1>
+		<div class="notes-dashboard">
+			<div class="note-grid">
+				<div class="note-card note-blue">
+					<div class="note-header">
+						<h3>Initial App Setup & Configuration</h3>
+						<span class="note-date">Oct 15, 2024</span>
+					</div>
+					<p class="note-content-snippet">
+						Completed basic authentication flows (login/logout...). Ready to integrate Firestore for
+						live testing.
+					</p>
+					<span class="note-id">#1</span>
+				</div>
 
-		<p>Paragraph</p>
-
+				<div class="note-card note-red">
+					<div class="note-header">
+						<h3>Real-Time Sync Feature - Alpha Test Report</h3>
+						<span class="note-date">Oct 16, 2024</span>
+					</div>
+					<p class="note-content-snippet">
+						Tested real-time cursor positioning with 5 users. Requires optimization of WebSockets
+						payload size.
+					</p>
+					<span class="note-id">#2</span>
+				</div>
+			</div>
+		</div>
 		<script src="script.js"></script>
 	</body>
 </html>

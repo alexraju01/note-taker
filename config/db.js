@@ -1,8 +1,6 @@
 // config/db.js
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-console.log(process.env.DB_URI);
-console.log("======================");
 const sequelize = new Sequelize(process.env.DB_URI, {
 	dialect: "mysql",
 	// database: process.env.DB_NAME,

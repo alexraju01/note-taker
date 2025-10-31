@@ -1,0 +1,61 @@
+/* General Layout */
+.note-grid {
+	display: grid; /* Use a grid for flexible layout */
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+	gap: 20px;
+	padding: 20px;
+}
+
+/* Base Card Style */
+.note-card {
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	transition: transform 0.2s;
+	cursor: pointer;
+	border-left: 5px solid transparent; /* The key for the accent color */
+}
+
+/* Hover effect for interaction */
+.note-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Header and Content Styles */
+.note-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+.note-card h3 {
+	margin: 0;
+	font-size: 1.1em;
+	color: #333;
+}
+.note-date {
+	font-size: 0.8em;
+	color: #888;
+}
+.note-content-snippet {
+	font-size: 0.9em;
+	color: #666;
+	margin: 0;
+	/* You would use JavaScript to ensure this content is truncated */
+}
+
+/* Applying Theme Colors to Accent Bar */
+.note-blue {
+	border-left-color: #3498db; /* A strong blue */
+}
+.note-red {
+	border-left-color: #e74c3c; /* A warning red */
+}
+.note-green {
+	border-left-color: #2ecc71; /* A success green */
+}
+.note-yellow {
+	border-left-color: #f1c40f; /* A caution yellow */
+}
