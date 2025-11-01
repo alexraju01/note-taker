@@ -39,6 +39,12 @@ exports.updateNote = async (req, res) => {
 	});
 };
 
+exports.createNote = async (req, res) => {
+	const note = await Note.create(req.body);
+
+	res.status(201).json({ data: note });
+};
+
 exports.deleteNote = async (req, res, next) => {
 	const { id } = req.params;
 

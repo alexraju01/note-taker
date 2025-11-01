@@ -1,4 +1,4 @@
-import { getNotes } from "./api/noteService.js";
+import { createNote, getNotes } from "./api/noteService.js";
 
 const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
@@ -21,6 +21,7 @@ const createNoteCard = (note) => {
 };
 
 const renderNotes = (notes) => {
+	if (!notesContainer) return null;
 	notesContainer.innerHTML = "";
 
 	const newNotesList = notes.map((note) => {
@@ -47,6 +48,7 @@ const getFormData = (formElement) => {
 const loadApplication = async () => {
 	initSearch();
 	const notes = await getNotes();
+	SubmitFormData();
 	if (notes && notes.length > 0) {
 		notesList = renderNotes(notes);
 	} else {
@@ -68,10 +70,17 @@ const initSearch = () => {
 
 loadApplication();
 
-noteForm.addEventListener("submit", (e) => {
-	e.preventDefault();
+const SubmitFormData = () => {
+	if (!noteForm) return null;
 
-	const formData = getFormData(noteForm);
+	noteForm.addEventListener("submit", async (e) => {
+		e.preventDefault();
 
-	console.log(formData);
-});
+		const formData = getFormData(noteForm);
+
+		console.log(formData);
+		const newNote = await createNote(formData);
+
+		console.log("Note successfully created:", newNote);
+	});
+};

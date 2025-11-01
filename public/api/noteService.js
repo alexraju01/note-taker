@@ -9,3 +9,13 @@ export const getNotes = async () => {
 		return [];
 	}
 };
+
+export const createNote = async (newNote) => {
+	try {
+		const notes = await fetchData("POST", newNote);
+		return notes;
+	} catch (error) {
+		console.error("Failed to craete new note.", error);
+		return [];
+	}
+};
