@@ -1,6 +1,7 @@
 const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
 const searchInput = document.querySelector("#search-input");
+// const createNote =
 
 let notesList = [];
 
