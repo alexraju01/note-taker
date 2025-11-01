@@ -1,7 +1,9 @@
+import { getNotes } from "./api/noteService.js";
+
 const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
-const searchInput = document.querySelector("#search-input");
-// const createNote =
+const searchInput = document.getElementById("search-input");
+const noteForm = document.getElementById("note-form");
 
 let notesList = [];
 
@@ -36,26 +38,15 @@ const renderNotes = (notes) => {
 	return newNotesList;
 };
 
-const fetchNotes = async () => {
-	const url = "http://localhost:8000/api/v1/notes";
-	try {
-		const response = await fetch(url);
+const getFormData = (formElement) => {
+	if (!formElement) null;
 
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-
-		const result = await response.json();
-		const { data: notes } = result;
-		return notes;
-	} catch (error) {
-		console.error(`Failed to fetch notes from ${url}:`, error);
-		return [];
-	}
+	return Object.fromEntries(new FormData(formElement).entries());
 };
 
 const loadApplication = async () => {
-	const notes = await fetchNotes();
+	initSearch();
+	const notes = await getNotes();
 	if (notes && notes.length > 0) {
 		notesList = renderNotes(notes);
 	} else {
@@ -63,12 +54,24 @@ const loadApplication = async () => {
 	}
 };
 
-searchInput.addEventListener("input", (e) => {
-	const searchValue = e.target.value.toLowerCase();
-	notesList.forEach((note) => {
-		const isVisible = note.title.toLowerCase().includes(searchValue);
-		note.element.classList.toggle("hide", !isVisible);
+const initSearch = () => {
+	if (!searchInput) return null;
+
+	searchInput.addEventListener("input", (e) => {
+		const searchValue = e.target.value.toLowerCase();
+		notesList.forEach((note) => {
+			const isVisible = note.title.toLowerCase().includes(searchValue);
+			note.element.classList.toggle("hide", !isVisible);
+		});
 	});
-});
+};
 
 loadApplication();
+
+noteForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	const formData = getFormData(noteForm);
+
+	console.log(formData);
+});
