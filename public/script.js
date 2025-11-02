@@ -12,10 +12,22 @@ const createNoteCard = (note) => {
 
 	const header = card.querySelector("[data-header]");
 	const content = card.querySelector("[data-content]");
+	const editBtn = card.querySelector('[data-action="edit"]');
+	const deleteBtn = card.querySelector('[data-action="delete"]');
 
 	// Set the content
 	header.textContent = note.title;
 	content.textContent = note.content;
+
+	if (!editBtn || !deleteBtn) return null;
+
+	editBtn.addEventListener("click", () => {
+		console.log("edit note");
+	});
+
+	deleteBtn.addEventListener("click", () => {
+		console.log("delete Note");
+	});
 
 	return card;
 };
@@ -49,6 +61,7 @@ const loadApplication = async () => {
 	initSearch();
 	const notes = await getNotes();
 	SubmitFormData();
+
 	if (notes && notes.length > 0) {
 		notesList = renderNotes(notes);
 	} else {
