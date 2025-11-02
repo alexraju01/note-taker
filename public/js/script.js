@@ -22,7 +22,10 @@ const createNoteCard = (note) => {
 	if (!editBtn || !deleteBtn) return null;
 
 	editBtn.addEventListener("click", () => {
-		console.log("edit note");
+		const { id } = note;
+		// 1. Redirect to a new dedicated edit page
+		// We pass the note 'id' as a URL query parameter
+		window.location.href = `/edit.html?id=${id}`;
 	});
 
 	deleteBtn.addEventListener("click", async () => {

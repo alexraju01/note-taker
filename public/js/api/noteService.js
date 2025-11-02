@@ -28,3 +28,12 @@ export const deleteNote = async (noteId) => {
 		console.error("Failed to delete note.", error);
 	}
 };
+
+export const updateNote = async (noteId, noteUpdates) => {
+	try {
+		const updateNote = await fetchData("PATCH", noteUpdates, `notes/${noteId}`);
+		return updateNote;
+	} catch (error) {
+		console.error("Failed to delete note.", error);
+	}
+};
