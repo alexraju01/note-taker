@@ -58,15 +58,16 @@ const getFormData = (formElement) => {
 };
 
 const loadApplication = async () => {
-	initSearch();
-	const notes = await getNotes();
-	SubmitFormData();
+	const notes = await getNotes(); // Fetches all notes first
 
 	if (notes && notes.length > 0) {
 		notesList = renderNotes(notes);
 	} else {
 		notesContainer.textContent = "No notes to display.";
 	}
+
+	initSearch(); // Then initiates the search box
+	SubmitFormData(); // Load the form last as it is not in the initial page
 };
 
 const initSearch = () => {
