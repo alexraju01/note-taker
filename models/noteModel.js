@@ -14,6 +14,11 @@ const Note = sequelize.define("Note", {
 		type: DataTypes.STRING,
 		defaultValue: "#ffffff",
 	},
+	status: {
+		type: DataTypes.BOOLEAN,
+		defaultValue: false,
+		allowNull: false,
+	},
 });
 
 module.exports = Note;
