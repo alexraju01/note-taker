@@ -1,4 +1,4 @@
-import { createNote, deleteNote, getNotes } from "./api/noteService.js";
+import { createNote, deleteNote, getAllNotes } from "./api/noteService.js";
 
 const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
@@ -67,7 +67,7 @@ const getFormData = (formElement) => {
 };
 
 const loadApplication = async () => {
-	const notes = await getNotes(); // Fetches all notes first
+	const notes = await getAllNotes(); // Fetches all notes first
 
 	if (notes && notes.length > 0) {
 		notesList = renderNotes(notes);

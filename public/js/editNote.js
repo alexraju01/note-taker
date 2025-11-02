@@ -1,4 +1,3 @@
-// public/editScript.js (Assuming you have updateNote and getNoteById functions in noteService.js)
 import { getNoteById, updateNote } from "./api/noteService.js";
 
 const form = document.getElementById("edit-note-form");
@@ -8,16 +7,19 @@ const idHiddenInput = document.getElementById("note-id-hidden");
 
 const getNoteIdFromUrl = () => {
 	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get("id"); // Gets the 'id' from ?id=...
+	return urlParams.get("id");
 };
 
 const loadNoteForEditing = async () => {
 	const noteId = getNoteIdFromUrl();
 
+	const noteData = await getNoteById(noteId);
+	console.log("data:", noteData);
+
 	if (!noteId) {
-		alert("Note ID missing. Cannot edit.");
-		window.location.href = "/index.html"; // Redirect back
-		return;
+		// alert("Note ID missing. Cannot edit.");
+		// window.location.href = "/index.html"; // Redirect back
+		return console.error("Could not load note editor");
 	}
 
 	try {
@@ -30,8 +32,8 @@ const loadNoteForEditing = async () => {
 		idHiddenInput.value = note.id; // Store the ID for the submission
 	} catch (error) {
 		console.error("Failed to load note:", error);
-		alert("Error loading note for editing.");
-		window.location.href = "/index.html";
+		// alert("Error loading note for editing.");
+		// window.location.href = "/index.html";
 	}
 };
 
@@ -49,9 +51,7 @@ const handleEditSubmit = () => {
 
 		try {
 			// Send the updated data to the server
-			const updatedNote = await updateNote(noteId, updatedData);
-
-			alert("Note successfully updated!");
+			await updateNote(noteId, updatedData);
 			window.location.href = "/index.html"; // Redirect to dashboard
 		} catch (error) {
 			console.error("Update failed:", error);

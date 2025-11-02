@@ -1,6 +1,6 @@
 import { fetchData } from "./baseApi.js";
 
-export const getNotes = async () => {
+export const getAllNotes = async () => {
 	try {
 		const notes = await fetchData();
 		return notes;
@@ -32,6 +32,15 @@ export const deleteNote = async (noteId) => {
 export const updateNote = async (noteId, noteUpdates) => {
 	try {
 		const updateNote = await fetchData("PATCH", noteUpdates, `notes/${noteId}`);
+		return updateNote;
+	} catch (error) {
+		console.error("Failed to delete note.", error);
+	}
+};
+
+export const getNoteById = async (noteId) => {
+	try {
+		const updateNote = await fetchData("GET", null, `notes/${noteId}`);
 		return updateNote;
 	} catch (error) {
 		console.error("Failed to delete note.", error);
