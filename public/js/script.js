@@ -25,7 +25,7 @@ const createNoteCard = (note) => {
 		const { id } = note;
 		// 1. Redirect to a new dedicated edit page
 		// We pass the note 'id' as a URL query parameter
-		window.location.href = `/edit.html?id=${id}`;
+		window.location.href = `./html/edit.html?id=${id}`;
 	});
 
 	deleteBtn.addEventListener("click", async () => {

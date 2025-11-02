@@ -2,26 +2,39 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../styles.css" />
 		<title>Edit Note</title>
-		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<div class="note-form-container">
-			<h1>Edit Note</h1>
-			<form id="edit-note-form">
-				<input type="text" id="edit-title" name="title" placeholder="Title" required />
-				<textarea
-					id="edit-content"
-					name="content"
-					placeholder="Content"
-					rows="10"
-					required></textarea>
+		<div class="create-note-page">
+			<div class="form-header">
+				<h1>Edit Note</h1>
+				<a href="../index.html" class="back-btn">Back to Notes</a>
+			</div>
+
+			<form id="edit-note-form" class="note-form">
+				<div class="form-group">
+					<label for="edit-title">Title</label>
+					<input type="text" id="edit-title" name="title" placeholder="Enter note title" required />
+				</div>
+
+				<div class="form-group">
+					<label for="edit-content">Content</label>
+					<textarea
+						id="edit-content"
+						name="content"
+						placeholder="Write your note..."
+						rows="8"
+						required></textarea>
+				</div>
+
 				<input type="hidden" id="note-id-hidden" name="id" />
-				<button type="submit">Save Changes</button>
+
+				<button type="submit" class="create-note-btn">Save Changes</button>
 			</form>
-			<a href="index.html">Cancel</a>
 		</div>
 
-		<script type="module" src="editScript.js"></script>
+		<script type="module" src="../js/editScript.js"></script>
 	</body>
 </html>
