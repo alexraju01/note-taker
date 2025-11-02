@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const favicon = require("serve-favicon");
+const path = require("path");
 const notesRouter = require("./routes/noteRoutes");
 const morgan = require("morgan");
 const AppError = require("./uilts/appError");
@@ -10,6 +12,7 @@ const cors = require("cors");
 app.use(express.json());
 
 app.use(cors());
+app.use(favicon(path.join(__dirname, "public/images", "favicon.ico")));
 app.use(express.static("public"));
 
 // Development Logging
