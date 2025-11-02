@@ -1,5 +1,4 @@
 export const fetchData = async (method = "GET", data = null, endpoint = "notes") => {
-	console.log("api fetch");
 	const url = `http://localhost:8000/api/v1/${endpoint}`;
 
 	const config = {
@@ -18,6 +17,11 @@ export const fetchData = async (method = "GET", data = null, endpoint = "notes")
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+
+		if (response.status === 204) {
+			console.log(`Successfully completed ${method} request to ${url} with 204 No Content.`);
+			return {}; // Return an empty object or true to signal success
 		}
 
 		const { data } = await response.json();

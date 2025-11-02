@@ -1,4 +1,4 @@
-import { createNote, getNotes } from "./api/noteService.js";
+import { createNote, deleteNote, getNotes } from "./api/noteService.js";
 
 const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
@@ -25,8 +25,14 @@ const createNoteCard = (note) => {
 		console.log("edit note");
 	});
 
-	deleteBtn.addEventListener("click", () => {
-		console.log("delete Note");
+	deleteBtn.addEventListener("click", async () => {
+		const { id } = note;
+		const deletedNote = await deleteNote(id);
+		if (deletedNote) {
+			card.remove();
+		} else {
+			console.error("Failed to remove card after attempted deletion.");
+		}
 	});
 
 	return card;
