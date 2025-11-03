@@ -12,14 +12,10 @@ if (!connectionUri) {
 const sequelize = new Sequelize(connectionUri, {
 	dialect: "mysql",
 
-	// Non-connection options
 	logging: false,
 
-	// This section is what enables the REQUIRED SSL/TLS connection
-	// that the Aiven database expects.
 	dialectOptions: {
 		ssl: {
-			// This is crucial for cloud services that use self-signed or non-standard CAs
 			rejectUnauthorized: false,
 		},
 	},

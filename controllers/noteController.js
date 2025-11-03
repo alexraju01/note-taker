@@ -2,21 +2,22 @@ const Note = require("../models/noteModel");
 const APIFeature = require("../utility/APIFeatures");
 const AppError = require("../utility/appError");
 
-exports.getAllNotes = async (req, res) => {
+exports.getAllNotes = async (_, res) => {
 	try {
+		const notes = await Note.findAll();
 		// 1. Instantiate the class with the Note model and request query
-		const features = new APIFeature(Note, req.query);
+		// const features = new APIFeature(Note, req.query);
 		// 2. Chain the paginate method AND execute the query
-		const { notes, count, limit, page } = await features.paginate().execute();
+		// const { notes, count, limit, page } = await features.paginate().execute();
 		// 3. Calculate total pages
-		const totalPages = Math.ceil(count / limit);
+		// const totalPages = Math.ceil(count / limit);
 
 		res.status(200).json({
 			status: "success",
 			results: notes.length,
 			data: notes,
-			totalPages: totalPages,
-			currentPage: page,
+			// totalPages: totalPages,
+			// currentPage: page,
 		});
 	} catch (err) {
 		res.status(404),
