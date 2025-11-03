@@ -24,7 +24,7 @@ export const fetchData = async (method = "GET", data = null, endpoint = "notes")
 			return {}; // Return an empty object or true to signal success
 		}
 
-		const { data } = await response.json();
+		const data = await response.json();
 		return data;
 		// Use result.data if available, otherwise return the whole result
 	} catch (error) {

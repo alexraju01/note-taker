@@ -13,8 +13,6 @@ const importData = async () => {
 	try {
 		await sequelize.sync({ force: true });
 		await Note.bulkCreate(notes);
-		console.log(await Note.bulkCreate(notes));
-		console.log("Data successfully imported");
 		process.exit();
 	} catch (error) {
 		console.error("Import dailed:", error);

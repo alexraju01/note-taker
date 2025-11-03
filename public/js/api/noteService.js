@@ -1,8 +1,9 @@
 import { fetchData } from "./baseApi.js";
 
-export const getAllNotes = async () => {
+export const getAllNotes = async (page = 1, limit = 10) => {
 	try {
-		const notes = await fetchData();
+		const endpoint = `notes?page=${page}&limit=${limit}`;
+		const notes = await fetchData("GET", null, endpoint);
 		return notes;
 	} catch (error) {
 		console.error("Failed to retrieve notes list.", error);

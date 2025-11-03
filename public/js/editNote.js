@@ -24,8 +24,8 @@ const loadNoteForEditing = async () => {
 
 	try {
 		// Fetch the existing note data from your server
-		const note = await getNoteById(noteId);
-
+		const { data: note } = await getNoteById(noteId);
+		console.log(note);
 		// Pre-fill the form with the current note data
 		titleInput.value = note.title;
 		contentInput.value = note.content;

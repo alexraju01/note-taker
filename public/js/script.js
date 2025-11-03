@@ -4,8 +4,12 @@ const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
 const searchInput = document.getElementById("search-input");
 const noteForm = document.getElementById("note-form");
+const paginationContainer = document.querySelector("#pagination-controls");
 
 let notesList = [];
+let currentPage = 1;
+let totalPages = 1; // This will be set based on the API response
+const NOTES_PER_PAGE = 10; // The api for this is (limit) which by default is 10
 
 const createNoteCard = (note) => {
 	const card = noteCardTemplate.content.cloneNode(true).children[0];
@@ -23,8 +27,6 @@ const createNoteCard = (note) => {
 
 	editBtn.addEventListener("click", () => {
 		const { id } = note;
-		// 1. Redirect to a new dedicated edit page
-		// We pass the note 'id' as a URL query parameter
 		window.location.href = `./html/edit.html?id=${id}`;
 	});
 
@@ -66,17 +68,28 @@ const getFormData = (formElement) => {
 	return Object.fromEntries(new FormData(formElement).entries());
 };
 
-const loadApplication = async () => {
-	const notes = await getAllNotes(); // Fetches all notes first
+const loadApplication = async (page = 1, limit = NOTES_PER_PAGE) => {
+	const apiResponse = await getAllNotes(page, limit);
+	console.log(apiResponse);
+	if (apiResponse && apiResponse.data) {
+		// --- Extract Data and Metadata ---
+		const notes = apiResponse.data; // The array of notes
+		currentPage = apiResponse.currentPage;
+		totalPages = apiResponse.totalPages;
 
-	if (notes && notes.length > 0) {
-		notesList = renderNotes(notes);
+		// 2. Render the notes and pagination controls
+
+		if (notes.length > 0) {
+			notesList = renderNotes(notes);
+		} else {
+			notesContainer.textContent = "No notes to display on this page.";
+		}
 	} else {
-		notesContainer.textContent = "No notes to display.";
+		notesContainer.textContent = "Failed to load notes or no data available.";
 	}
 
-	initSearch(); // Then initiates the search box
-	SubmitFormData(); // Load the form last as it is not in the initial page
+	initSearch();
+	SubmitFormData();
 };
 
 const initSearch = () => {
@@ -103,7 +116,7 @@ const SubmitFormData = () => {
 
 		console.log(formData);
 		const newNote = await createNote(formData);
-
+		window.location.href = `../index.html`;
 		console.log("Note successfully created:", newNote);
 	});
 };

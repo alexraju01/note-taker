@@ -1,8 +1,8 @@
 [
 	{
 		"id": 1,
-		"title": "Initial App Setup & Configuration",
-		"content": "Completed basic authentication flows (login/logout). Configured CORS policy for local development environment. Ready to integrate Firestore for live testing.",
+		"title": "Perform Random Act of Kindness",
+		"content": "Buy a coffee for the next person in line or leave a positive note for a co-worker. Focus on low-effort, high-impact kindness.",
 		"colour": "blue",
 		"status": true,
 		"createdAt": "2024-10-15T09:30:00Z",
@@ -10,8 +10,8 @@
 	},
 	{
 		"id": 2,
-		"title": "Real-Time Sync Feature - Alpha Test Report",
-		"content": "Tested real-time cursor positioning with 5 users. Bug found: latency spikes when large paragraphs are pasted. Requires optimization of WebSockets payload size.",
+		"title": "Check Firewall Logs for Anomalies",
+		"content": "Review all egress traffic from the staging environment between 02:00 UTC and 05:00 UTC. Flag any unexpected port usage. Urgent priority.",
 		"colour": "red",
 		"status": false,
 		"createdAt": "2024-10-16T14:45:00Z",
@@ -19,8 +19,8 @@
 	},
 	{
 		"id": 3,
-		"title": "Marketing Strategy Brainstorm: Q4",
-		"content": "Focus on developer community outreach. Target subreddits and tech forums. Prepare a simple demo video showcasing the document history feature.",
+		"title": "Review Q4 Marketing Budget Allocation",
+		"content": "Verify spending limit for Google Ads versus LinkedIn campaigns. Shift 15% from social to content creation. Must be approved by finance by EOD.",
 		"colour": "green",
 		"status": false,
 		"createdAt": "2024-10-17T17:00:00Z",
@@ -28,8 +28,8 @@
 	},
 	{
 		"id": 4,
-		"title": "Database Schema Review: User Permissions",
-		"content": "Verified many-to-many relationship for document sharing. Added 'owner_id' to the 'notes' table. Ready for pull request and peer review.",
+		"title": "Buy New Running Shoes (Urgent)",
+		"content": "Need to replace old pair. Check local sports store for the latest Brooks Ghost or Hoka Clifton models. Don't forget new running socks.",
 		"colour": "yellow",
 		"status": true,
 		"createdAt": "2024-10-18T10:15:00Z",
@@ -37,8 +37,8 @@
 	},
 	{
 		"id": 5,
-		"title": "Future Feature Idea: Markdown Support",
-		"content": "Investigate implementing a rich text editor that natively supports Markdown formatting and rendering for developers.",
+		"title": "Research Micro-frontends for Next Project",
+		"content": "Investigate using Module Federation in Webpack 5. Look up case studies from major companies like Spotify or IKEA on successful implementation patterns.",
 		"colour": "blue",
 		"status": false,
 		"createdAt": "2024-10-19T11:50:00Z",
@@ -46,8 +46,8 @@
 	},
 	{
 		"id": 6,
-		"title": "Design System: Typography & Color Palette",
-		"content": "Finalized primary font stack (Inter, sans-serif) and defined the 5-color palette for note categorization (Red, Blue, Green, Yellow, Gray).",
+		"title": "Practice Japanese Vocab: N3 verbs",
+		"content": "Spend 30 minutes on flashcards for ~verbs. Review conjugations for past tense and potential form. Focus on the 'iru' group.",
 		"colour": "green",
 		"status": true,
 		"createdAt": "2024-10-20T13:00:00Z",
@@ -55,8 +55,8 @@
 	},
 	{
 		"id": 7,
-		"title": "To-Do: Clean up unused CSS files",
-		"content": "Remove deprecated styling from the document viewer component. Consolidate utility classes using Tailwind CSS for better performance.",
+		"title": "Fix Broken Coffee Maker Drip",
+		"content": "The carafe gasket is leaking. Order a replacement seal kit from Amazon or check if the local appliance store has a compatible part in stock.",
 		"colour": "red",
 		"status": true,
 		"createdAt": "2024-10-21T08:40:00Z",
@@ -64,8 +64,8 @@
 	},
 	{
 		"id": 8,
-		"title": "User Feedback Summary - Week 1",
-		"content": "Top request: Drag-and-drop ordering in the document list. Second request: Dark mode toggle. Prioritize drag-and-drop for Sprint 2.",
+		"title": "Review Personal Budget for November",
+		"content": "Check subscriptions. Cancel the streaming service that hasn't been used in 3 months. Allocate extra funds to the travel savings goal.",
 		"colour": "yellow",
 		"status": false,
 		"createdAt": "2024-10-22T16:20:00Z",
@@ -73,8 +73,8 @@
 	},
 	{
 		"id": 9,
-		"title": "Dependency Audit & Security Check",
-		"content": "Updated all major npm packages (React, Firebase). Ran vulnerability scanner (Snyk) with no critical vulnerabilities found.",
+		"title": "Draft New Feature RFC: Time Travel Debugger",
+		"content": "Outline the technical requirements for recording state changes in Redux/Vuex. Define the API shape for accessing the recorded history.",
 		"colour": "blue",
 		"status": true,
 		"createdAt": "2024-10-23T10:00:00Z",
@@ -82,11 +82,101 @@
 	},
 	{
 		"id": 10,
-		"title": "Deployment Pipeline Update",
-		"content": "Successfully migrated CI/CD to use GitHub Actions for automated testing and staging deployment on every push to the 'main' branch.",
+		"title": "Call Landlord about Leak in Kitchen",
+		"content": "The pipe under the sink has a slow drip. Need to schedule a maintenance visit before it causes damage. Call between 9 AM and 5 PM.",
 		"colour": "green",
 		"status": true,
 		"createdAt": "2024-10-24T12:30:00Z",
 		"updatedAt": "2024-10-24T14:00:00Z"
+	},
+	{
+		"id": 11,
+		"title": "Organize Digital Photos from Trip",
+		"content": "Create a new folder structure: /Vacation/Paris/Day_1. Delete duplicates and blurry photos. Upload the final gallery to the shared drive.",
+		"colour": "yellow",
+		"status": false,
+		"createdAt": "2024-10-25T15:00:00Z",
+		"updatedAt": "2024-10-25T15:00:00Z"
+	},
+	{
+		"id": 12,
+		"title": "Read Article: 'The Future of Serverless'",
+		"content": "Review the latest trends in FaaS and Edge computing. Write a 3-point summary on its impact on deployment costs for the team meeting.",
+		"colour": "blue",
+		"status": false,
+		"createdAt": "2024-10-26T07:20:00Z",
+		"updatedAt": "2024-10-26T07:20:00Z"
+	},
+	{
+		"id": 13,
+		"title": "Write Thank You Notes to Clients",
+		"content": "Draft personalized emails for clients A, B, and C who signed contracts this month. Send them a small gift package via the courier service.",
+		"colour": "green",
+		"status": true,
+		"createdAt": "2024-10-27T11:45:00Z",
+		"updatedAt": "2024-10-27T11:45:00Z"
+	},
+	{
+		"id": 14,
+		"title": "Install New Graphics Card Drivers",
+		"content": "Update the Nvidia drivers to the latest stable version (546.65). Check settings in all major games to ensure optimal performance.",
+		"colour": "red",
+		"status": true,
+		"createdAt": "2024-10-28T19:30:00Z",
+		"updatedAt": "2024-10-28T19:30:00Z"
+	},
+	{
+		"id": 15,
+		"title": "Bake Sourdough Starter Feed Day",
+		"content": "Feed the starter 'Bertha' with 50g flour and 50g water. Discard half of the remaining volume. Set a reminder for the next feeding in 12 hours.",
+		"colour": "yellow",
+		"status": false,
+		"createdAt": "2024-10-29T06:00:00Z",
+		"updatedAt": "2024-10-29T06:00:00Z"
+	},
+	{
+		"id": 16,
+		"title": "Create Dashboard for Backend Metrics",
+		"content": "Set up Prometheus and Grafana on the monitoring server. Configure alerts for 95th percentile latency exceeding 500ms for API calls.",
+		"colour": "blue",
+		"status": true,
+		"createdAt": "2024-10-30T10:20:00Z",
+		"updatedAt": "2024-10-30T10:20:00Z"
+	},
+	{
+		"id": 17,
+		"title": "Clean Refrigerator and Pantry",
+		"content": "Throw out expired condiments and forgotten leftovers. Wipe down shelves with an antibacterial cleaner. Organize dry goods by expiration date.",
+		"colour": "green",
+		"status": false,
+		"createdAt": "2024-10-31T14:55:00Z",
+		"updatedAt": "2024-10-31T14:55:00Z"
+	},
+	{
+		"id": 18,
+		"title": "Finalize Q4 Sales Pitch Deck",
+		"content": "Review slides 5 and 9 for correct market statistics. Add a closing slide with tiered pricing options. Send to the CEO for final sign-off.",
+		"colour": "red",
+		"status": false,
+		"createdAt": "2024-11-01T08:00:00Z",
+		"updatedAt": "2024-11-01T08:00:00Z"
+	},
+	{
+		"id": 19,
+		"title": "Learn Three New Guitar Chords",
+		"content": "Practice the Dsus4, Am7, and E7 chords. Integrate them into a simple 4-bar progression. Use the metronome at 90 BPM.",
+		"colour": "yellow",
+		"status": true,
+		"createdAt": "2024-11-02T18:10:00Z",
+		"updatedAt": "2024-11-02T18:10:00Z"
+	},
+	{
+		"id": 20,
+		"title": "Set Up DNS Records for New Domain",
+		"content": "Add A record pointing to the main server IP. Configure MX records for Google Workspace email delivery. Check propagation using a public DNS checker.",
+		"colour": "blue",
+		"status": true,
+		"createdAt": "2024-11-03T09:00:00Z",
+		"updatedAt": "2024-11-03T09:00:00Z"
 	}
 ]
