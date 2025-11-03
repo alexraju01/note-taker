@@ -65,7 +65,7 @@ const getFormData = (formElement) => {
 	return Object.fromEntries(new FormData(formElement).entries());
 };
 
-const loadApplication = async (page = 1, limit = 2) => {
+const loadApplication = async (page = 1, limit = 10) => {
 	const apiResponse = await getAllNotes(page, limit);
 	console.log(apiResponse);
 	if (apiResponse && apiResponse.data) {
