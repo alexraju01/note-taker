@@ -1,6 +1,6 @@
 const Note = require("../models/noteModel");
-const APIFeature = require("../uilts/APIFeatures");
-const AppError = require("../uilts/appError");
+const APIFeature = require("../utility/APIFeatures");
+const AppError = require("../utility/appError");
 
 exports.getAllNotes = async (req, res) => {
 	try {

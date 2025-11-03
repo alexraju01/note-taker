@@ -4,7 +4,7 @@ const favicon = require("serve-favicon");
 const path = require("path");
 const notesRouter = require("./routes/noteRoutes");
 const morgan = require("morgan");
-const AppError = require("./uilts/appError");
+const AppError = require("./utility/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const cors = require("cors");
 
