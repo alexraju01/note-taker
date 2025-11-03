@@ -23,12 +23,15 @@ body {
 	color: var(--text-primary);
 	padding: 32px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 
 .notes-dashboard {
 	width: 100%;
 	max-width: 1300px;
+	margin-bottom: 2rem;
 }
 
 /* ----- Header Section ----- */
@@ -100,6 +103,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 	cursor: pointer;
 	transition: 0.3s all ease;
+	height: 10.5rem;
 }
 
 .note-card:hover {
@@ -117,6 +121,10 @@ input[type="search"]::-webkit-search-cancel-button {
 .note-header h3 {
 	font-size: 1.1rem;
 	font-weight: 600;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 .note-actions {
@@ -185,6 +193,11 @@ input[type="search"]::-webkit-search-cancel-button {
 	color: var(--text-secondary);
 	line-height: 1.5;
 	font-size: 0.95rem;
+
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 
 .hide {
@@ -329,4 +342,82 @@ input[type="search"]::-webkit-search-cancel-button {
 .create-note-btn:active {
 	transform: scale(0.97);
 	box-shadow: 0 3px 8px rgba(58, 130, 247, 0.25);
+}
+
+/* ============Pagination Buttons ============= */
+/* --- 1. Container Layout --- */
+#pagination-controls {
+	/* Use flexbox to align buttons horizontally */
+	display: flex;
+	justify-content: center; /* Center the entire control group */
+	align-items: center; /* ALIGNMENT FIX: Ensures vertical center */
+	gap: 8px; /* Space between buttons */
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+/* --- 2. Base Button Style --- */
+.pagination-btn {
+	/* Layout Stability Fix: Set a minimum width for numerical buttons (e.g., 1-9) 
+       to accommodate two digits (e.g., 10-99) without shifting. */
+	min-width: 40px;
+	text-align: center; /* Center the number within the fixed width */
+	box-sizing: border-box; /* Ensure padding is included in the 40px width */
+
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	color: #333;
+	cursor: pointer;
+	border-radius: 4px;
+	font-size: 14px;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+	user-select: none;
+}
+
+/* --- 3. Hover State --- */
+.pagination-btn:hover:not(:disabled):not(.active) {
+	background-color: #f0f0f0;
+	border-color: #aaa;
+}
+
+/* --- 4. Active State (Current Page) --- */
+.pagination-btn.active {
+	background-color: #007bff;
+	color: #fff;
+	border-color: #007bff;
+	cursor: default;
+	font-weight: bold;
+}
+
+/* --- 5. Disabled State (e.g., Page 1 when clicking 'Previous') --- */
+.pagination-btn:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+	/* pointer-events: none; is fine, but can be removed if not needed */
+}
+
+/* --- 6. Styling for 'Previous' and 'Next' --- */
+.pagination-btn[data-page="prev"],
+.pagination-btn[data-page="next"] {
+	/* Override fixed numerical button width to give these ample space */
+	min-width: 90px;
+	/* Reset text alignment if necessary, though center is usually fine */
+	text-align: center;
+	font-weight: 500;
+}
+
+/* --- 7. Ellipsis Alignment Fix --- */
+.pagination-ellipsis {
+	/* Padding matching the vertical padding of the buttons (10px top/bottom) */
+	padding: 10px 0;
+	color: #666;
+	font-size: 14px;
+	user-select: none;
+
+	/* Ensure the ellipsis aligns perfectly with the button text baseline */
+	line-height: 1.2;
+	height: 100%; /* Ensure it spans the full height of the flex item */
+	display: flex;
+	align-items: center; /* Center the dots vertically */
 }
