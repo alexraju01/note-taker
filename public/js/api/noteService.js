@@ -17,7 +17,7 @@ export const createNote = async (newNote) => {
 		return notes;
 	} catch (error) {
 		console.error("Failed to craete new note.", error);
-		return [];
+		throw error;
 	}
 };
 
@@ -27,6 +27,7 @@ export const deleteNote = async (noteId) => {
 		return deleteNote;
 	} catch (error) {
 		console.error("Failed to delete note.", error);
+		throw error;
 	}
 };
 

@@ -13,9 +13,6 @@ const getNoteIdFromUrl = () => {
 const loadNoteForEditing = async () => {
 	const noteId = getNoteIdFromUrl();
 
-	const noteData = await getNoteById(noteId);
-	console.log("data:", noteData);
-
 	if (!noteId) {
 		// alert("Note ID missing. Cannot edit.");
 		// window.location.href = "/index.html"; // Redirect back
@@ -25,7 +22,7 @@ const loadNoteForEditing = async () => {
 	try {
 		// Fetch the existing note data from your server
 		const { data: note } = await getNoteById(noteId);
-		console.log(note);
+		console.log("=========", note);
 		// Pre-fill the form with the current note data
 		titleInput.value = note.title;
 		contentInput.value = note.content;

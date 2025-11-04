@@ -12,8 +12,8 @@ const cors = require("cors");
 app.use(express.json());
 
 app.use(cors());
-app.use(favicon(path.join(__dirname, "public/images", "favicon.ico")));
 app.use(express.static("public"));
+app.use(favicon(path.join(__dirname, "public/images", "favicon.ico")));
 
 // Development Logging
 if (process.env.NODE_ENV === "development") {

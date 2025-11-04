@@ -66,8 +66,8 @@ const getFormData = (formElement) => {
 
 const loadApplication = async (page = 1, limit = 10) => {
 	const apiResponse = await getAllNotes(page, limit);
-	console.log(apiResponse);
 	if (apiResponse && apiResponse.data) {
+		console.log("=========", apiResponse);
 		const notes = apiResponse.data;
 		// const currentPage = apiResponse.currentPage;
 		// const totalPages = apiResponse.totalPages;
@@ -196,7 +196,7 @@ const SubmitFormData = () => {
 
 		console.log(formData);
 		const newNote = await createNote(formData);
-		window.location.href = `../index.html`;
+		// window.location.href = `../index.html`;
 		console.log("Note successfully created:", newNote);
 	});
 };

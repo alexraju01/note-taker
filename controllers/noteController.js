@@ -1,39 +1,29 @@
 const Note = require("../models/noteModel");
 const APIFeature = require("../utility/APIFeatures");
 const AppError = require("../utility/appError");
+const catchAsync = require("../utility/catchAsync");
 
-exports.getAllNotes = async (_, res) => {
-	try {
-		const notes = await Note.findAll();
-		// 1. Instantiate the class with the Note model and request query
-		// const features = new APIFeature(Note, req.query);
-		// 2. Chain the paginate method AND execute the query
-		// const { notes, count, limit, page } = await features.paginate().execute();
-		// 3. Calculate total pages
-		// const totalPages = Math.ceil(count / limit);
+exports.getAllNotes = catchAsync(async (_, res) => {
+	const notes = await Note.findAll();
 
-		res.status(200).json({
-			status: "success",
-			results: notes.length,
-			data: notes,
-			// totalPages: totalPages,
-			// currentPage: page,
-		});
-	} catch (err) {
-		res.status(404),
-			json({
-				status: "fail",
-				message: err.message,
-			});
-	}
-};
+	res.status(200).json({
+		status: "success",
+		results: notes.length,
+		data: notes,
+	});
+});
 
-exports.getOne = async (req, res) => {
+exports.getOne = catchAsync(async (req, res, next) => {
 	const { id } = req.params;
+	// 1. Check if the ID is a valid format (e.g., a number)
+	if (!id || Number.isNaN(Number(id))) {
+		return next(new AppError("Invalid Note ID format. ID must be a number.", 400));
+	}
 	const note = await Note.findByPk(id);
+	if (!note) return next(new AppError("No Note found with that id", 404));
 
 	res.status(200).json({ status: "success", data: note });
-};
+});
 
 exports.updateNote = async (req, res) => {
 	const { id } = req.params;
@@ -41,9 +31,7 @@ exports.updateNote = async (req, res) => {
 
 	const note = await Note.findByPk(id);
 
-	if (!note) {
-		return res.status(404).json({ message: "Note not found" });
-	}
+	if (!note) return next(new AppError("No Note found with that id", 404));
 
 	const updatedNote = await note.update({ title, content });
 

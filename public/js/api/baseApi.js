@@ -16,7 +16,20 @@ export const fetchData = async (method = "GET", data = null, endpoint = "notes")
 		const response = await fetch(url, config);
 
 		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
+			const errorBody = await response.json().catch(() => ({}));
+
+			// 2. Check if a custom message exists in the error body (e.g., errorBody.message)
+			let errorMessage = `HTTP error! Status: ${response.status} (${
+				response.statusText || "Unknown"
+			})`;
+
+			if (errorBody.message) {
+				// This is the message you want: "Title must be between 3 and 100..."
+				errorMessage = errorBody.message;
+			}
+
+			// Throw a new Error with the custom message
+			throw new Error(errorMessage);
 		}
 
 		if (response.status === 204) {
