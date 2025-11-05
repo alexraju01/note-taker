@@ -45,7 +45,7 @@ const handleEditSubmit = () => {
 		try {
 			// Send the updated data to the server
 			await updateNote(noteId, updatedData);
-			displayMessage(form, "Successfully created the note", "success");
+			displayMessage(form, "Successfully updated the note!", "success");
 		} catch (error) {
 			console.error("Update failed:", error);
 			alert("Failed to save changes.");
