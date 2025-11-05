@@ -68,7 +68,6 @@ const getFormData = (formElement) => {
 const loadApplication = async (page = 1, limit = 10) => {
 	const apiResponse = await getAllNotes(page, limit);
 	if (apiResponse && apiResponse.data) {
-		console.log("=========", apiResponse);
 		const notes = apiResponse.data;
 
 		if (notes.length > 0) {

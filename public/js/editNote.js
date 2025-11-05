@@ -21,7 +21,6 @@ const loadNoteForEditing = async () => {
 	try {
 		// Fetch the existing note data from your server
 		const { data: note } = await getNoteById(noteId);
-		console.log("=========", note);
 		// Pre-fill the form with the current note data
 		titleInput.value = note.title;
 		contentInput.value = note.content;
@@ -46,8 +45,7 @@ const handleEditSubmit = () => {
 		try {
 			// Send the updated data to the server
 			await updateNote(noteId, updatedData);
-			displayMessage(formMessage, "Successfully created the note", "success");
-			window.location.href = "/index.html"; // Redirect to dashboard
+			displayMessage(form, "Successfully created the note", "success");
 		} catch (error) {
 			console.error("Update failed:", error);
 			alert("Failed to save changes.");

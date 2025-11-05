@@ -51,7 +51,6 @@ module.exports = (err, req, res, next) => {
 		sendErrorDev(err, res);
 	} else if (process.env.NODE_ENV === "production") {
 		let error = { ...err };
-		console.log("errrrrrrrr", error);
 		if (error.name === "SequelizeUniqueConstraintError") {
 			error = handleSequelizeUniqueConstraintErrorDB(error);
 		}
