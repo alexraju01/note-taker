@@ -16,7 +16,7 @@ export const createNote = async (newNote) => {
 		const notes = await fetchData("POST", newNote);
 		return notes;
 	} catch (error) {
-		console.error("Failed to craete new note.", error);
+		console.error("Failed to create new note.", error);
 		throw error;
 	}
 };
@@ -37,6 +37,7 @@ export const updateNote = async (noteId, noteUpdates) => {
 		return updateNote;
 	} catch (error) {
 		console.error("Failed to delete note.", error);
+		throw error;
 	}
 };
 

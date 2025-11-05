@@ -18,7 +18,6 @@ export const fetchData = async (method = "GET", data = null, endpoint = "notes")
 		if (!response.ok) {
 			const errorBody = await response.json().catch(() => ({}));
 
-			// 2. Check if a custom message exists in the error body (e.g., errorBody.message)
 			let errorMessage = `HTTP error! Status: ${response.status} (${
 				response.statusText || "Unknown"
 			})`;

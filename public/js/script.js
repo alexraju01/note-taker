@@ -1,4 +1,5 @@
 import { createNote, deleteNote, getAllNotes } from "./api/noteService.js";
+import { displayMessage } from "./displayMessage.js";
 
 const notesContainer = document.querySelector("#note-grid");
 const noteCardTemplate = document.querySelector("[data-note-card-template]");
@@ -69,13 +70,9 @@ const loadApplication = async (page = 1, limit = 10) => {
 	if (apiResponse && apiResponse.data) {
 		console.log("=========", apiResponse);
 		const notes = apiResponse.data;
-		// const currentPage = apiResponse.currentPage;
-		// const totalPages = apiResponse.totalPages;
 
-		// 2. Render the notes and pagination controls
 		if (notes.length > 0) {
 			notesList = renderNotes(notes);
-			// renderPagination(totalPages, currentPage);
 		} else {
 			notesContainer.textContent = "No notes to display on this page.";
 		}
@@ -86,91 +83,6 @@ const loadApplication = async (page = 1, limit = 10) => {
 	initSearch();
 	SubmitFormData();
 };
-
-// ################ Future Implementation of pagination ###############
-
-// const renderPagination = (totalPages, currentPage) => {
-// 	if (!paginationContainer) return;
-// 	paginationContainer.innerHTML = "";
-
-// If the data is empty or only one page exists, hide controls
-// if (totalPages <= 1) {
-// 	paginationContainer.style.display = "none";
-// 	return;
-// }
-
-// paginationContainer.style.display = "flex";
-
-// Helper function (remains the same)
-// const createButton = (text, pageNumber, isActive, isDisabled) => {
-// 	const button = document.createElement("button");
-// 	button.textContent = text;
-// 	button.disabled = isDisabled;
-// 	button.classList.add("pagination-btn");
-
-// 	if (isActive) button.classList.add("active");
-
-// 	button.addEventListener("click", () => {
-// 		loadApplication(pageNumber);
-// 	});
-// 	return button;
-// };
-
-// // Helper function to create the '...' element
-// const createEllipsis = () => {
-// 	const span = document.createElement("span");
-// 	span.textContent = "...";
-// 	span.classList.add("pagination-ellipsis");
-// 	return span;
-// };
-
-// // Define how many page numbers to show around the current page
-// const sideCount = 1; // How many pages to show on either side of currentPage
-// const startPage = Math.max(2, currentPage - sideCount);
-// const endPage = Math.min(totalPages - 1, currentPage + sideCount);
-
-// // --- 1. Previous Button ---
-// const prevBtn = createButton("Previous", currentPage - 1, false, currentPage === 1);
-// paginationContainer.append(prevBtn);
-
-// // --- 2. Dynamic Page Numbers ---
-
-// // A. Always show the FIRST page button (unless totalPages is tiny)
-// if (totalPages > 0) {
-// 	paginationContainer.append(createButton(1, 1, currentPage === 1, false));
-// }
-
-// // B. Render Left Ellipsis
-// // Show '...' if the second page (2) is not visible
-// if (startPage > 2) {
-// 	paginationContainer.append(createEllipsis());
-// }
-
-// // C. Render Middle Block (around the current page)
-// for (let i = startPage; i <= endPage; i++) {
-// 	// Skip pages 1 and totalPages if they are within the calculated middle block
-// 	if (i !== 1 && i !== totalPages) {
-// 		paginationContainer.append(createButton(i, i, i === currentPage, false));
-// 	}
-// }
-
-// // D. Render Right Ellipsis
-// // Show '...' if the second-to-last page (totalPages - 1) is not visible
-// if (endPage < totalPages - 1) {
-// 	paginationContainer.append(createEllipsis());
-// }
-
-// // E. Always show the LAST page button
-// if (totalPages > 1) {
-// 	paginationContainer.append(
-// 		createButton(totalPages, totalPages, currentPage === totalPages, false)
-// 	);
-// }
-
-// // --- 3. Next Button ---
-// const nextBtn = createButton("Next", currentPage + 1, false, currentPage === totalPages);
-// paginationContainer.append(nextBtn);
-// };
 
 const initSearch = () => {
 	if (!searchInput) return null;
@@ -185,18 +97,29 @@ const initSearch = () => {
 };
 
 loadApplication();
-
+const formMessage = document.getElementById("form-message");
 const SubmitFormData = () => {
+	// We no longer need document.getElementById("form-message");
+
 	if (!noteForm) return null;
 
 	noteForm.addEventListener("submit", async (e) => {
 		e.preventDefault();
 
-		const formData = getFormData(noteForm);
+		// Use the form itself as the target container for the dynamic message
+		const messageContainer = noteForm;
 
-		console.log(formData);
-		const newNote = await createNote(formData);
-		// window.location.href = `../index.html`;
-		console.log("Note successfully created:", newNote);
+		try {
+			const formData = getFormData(noteForm);
+			await createNote(formData);
+
+			// Call the dynamic function, passing the form as the container
+			displayMessage(messageContainer, "Successfully created the note!", "success");
+
+			noteForm.reset();
+		} catch (error) {
+			// Call the dynamic function for the error message
+			displayMessage(messageContainer, error.message, "error");
+		}
 	});
 };

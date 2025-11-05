@@ -325,7 +325,6 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: 12px 20px;
 	font-size: 1rem;
 	font-weight: 500;
-	text-decoration: none; /* important for <a> */
 	cursor: pointer;
 	text-align: center;
 	transition: background-color var(--transition), transform var(--transition),
@@ -344,80 +343,31 @@ input[type="search"]::-webkit-search-cancel-button {
 	box-shadow: 0 3px 8px rgba(58, 130, 247, 0.25);
 }
 
-/* ============Pagination Buttons ============= */
-/* --- 1. Container Layout --- */
-#pagination-controls {
-	/* Use flexbox to align buttons horizontally */
-	display: flex;
-	justify-content: center; /* Center the entire control group */
-	align-items: center; /* ALIGNMENT FIX: Ensures vertical center */
-	gap: 8px; /* Space between buttons */
-	margin-top: 25px;
-	margin-bottom: 25px;
-}
+/* Display Message */
+/* =========================== */
 
-/* --- 2. Base Button Style --- */
-.pagination-btn {
-	/* Layout Stability Fix: Set a minimum width for numerical buttons (e.g., 1-9) 
-       to accommodate two digits (e.g., 10-99) without shifting. */
-	min-width: 40px;
-	text-align: center; /* Center the number within the fixed width */
-	box-sizing: border-box; /* Ensure padding is included in the 40px width */
-
-	padding: 10px 15px;
-	border: 1px solid #ccc;
-	background-color: #fff;
-	color: #333;
-	cursor: pointer;
+/* Style for the general message area */
+#form-message {
+	padding: 0;
+	margin-top: 15px;
 	border-radius: 4px;
-	font-size: 14px;
-	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-	user-select: none;
-}
-
-/* --- 3. Hover State --- */
-.pagination-btn:hover:not(:disabled):not(.active) {
-	background-color: #f0f0f0;
-	border-color: #aaa;
-}
-
-/* --- 4. Active State (Current Page) --- */
-.pagination-btn.active {
-	background-color: #007bff;
-	color: #fff;
-	border-color: #007bff;
-	cursor: default;
+	font-size: 1em;
 	font-weight: bold;
-}
-
-/* --- 5. Disabled State (e.g., Page 1 when clicking 'Previous') --- */
-.pagination-btn:disabled {
-	cursor: not-allowed;
-	opacity: 0.5;
-	/* pointer-events: none; is fine, but can be removed if not needed */
-}
-
-/* --- 6. Styling for 'Previous' and 'Next' --- */
-.pagination-btn[data-page="prev"],
-.pagination-btn[data-page="next"] {
-	/* Override fixed numerical button width to give these ample space */
-	min-width: 90px;
-	/* Reset text alignment if necessary, though center is usually fine */
 	text-align: center;
-	font-weight: 500;
 }
 
-/* --- 7. Ellipsis Alignment Fix --- */
-.pagination-ellipsis {
-	/* Padding matching the vertical padding of the buttons (10px top/bottom) */
-	padding: 10px 0;
-	color: #666;
-	font-size: 14px;
-	user-select: none;
+/* Style when a SUCCESS message is shown */
+.success-message {
+	background-color: #e6ffed;
+	color: #004d40;
+	border: 1px solid #c8e6c9;
+	padding: 10px;
+}
 
-	/* Ensure the ellipsis aligns perfectly with the button text baseline */
-	line-height: 1.2;
-	height: 100%; /* Ensure it spans the full height of the flex item */
-	display: flex;
-	align-items: center; /* Center the dots vertically */
+/* Style when an ERROR message is shown */
+.error-message {
+	background-color: #ffebee;
+	color: #c62828;
+	border: 1px solid #ef9a9a;
+	padding: 10px;
 }

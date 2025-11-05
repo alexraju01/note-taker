@@ -1,4 +1,5 @@
 import { getNoteById, updateNote } from "./api/noteService.js";
+import { displayMessage } from "./displayMessage.js";
 
 const form = document.getElementById("edit-note-form");
 const titleInput = document.getElementById("edit-title");
@@ -14,8 +15,6 @@ const loadNoteForEditing = async () => {
 	const noteId = getNoteIdFromUrl();
 
 	if (!noteId) {
-		// alert("Note ID missing. Cannot edit.");
-		// window.location.href = "/index.html"; // Redirect back
 		return console.error("Could not load note editor");
 	}
 
@@ -29,8 +28,6 @@ const loadNoteForEditing = async () => {
 		idHiddenInput.value = note.id; // Store the ID for the submission
 	} catch (error) {
 		console.error("Failed to load note:", error);
-		// alert("Error loading note for editing.");
-		// window.location.href = "/index.html";
 	}
 };
 
@@ -49,6 +46,7 @@ const handleEditSubmit = () => {
 		try {
 			// Send the updated data to the server
 			await updateNote(noteId, updatedData);
+			displayMessage(formMessage, "Successfully created the note", "success");
 			window.location.href = "/index.html"; // Redirect to dashboard
 		} catch (error) {
 			console.error("Update failed:", error);
