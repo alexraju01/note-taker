@@ -41,3 +41,24 @@ This project demonstrates how to build and deploy a complete **CRUD** (Create, R
 - Express.js
 - MySQL
 - Sequelize ORM
+
+### Setup Locally
+
+1. Install all the relevant packages
+
+```
+npm i
+```
+
+2. Create a .env file and fill in db credientials
+
+```
+touch .env
+DB_URI="Your DB_URI goes here"
+```
+
+3. Now start your application
+
+```
+npm start
+```
