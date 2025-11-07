@@ -12,9 +12,9 @@ const startServer = async () => {
 		await sequelize.sync();
 		console.log("Models synchronized.");
 
-		const { port } = process.env;
-		app.listen(port, () => {
-			console.log(` Server is running at http://localhost:${port}`);
+		const { PORT } = process.env;
+		app.listen(PORT, () => {
+			console.log(` Server is running at http://localhost:${PORT}`);
 		});
 	} catch (error) {
 		console.error(" Database connection failed:", error);
