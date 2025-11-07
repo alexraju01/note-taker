@@ -9,19 +9,19 @@ if (!connectionUri) {
 }
 
 // Pass the URI to Sequelize, which handles extracting host, port, user, dbname, etc.
-const sequelize = new Sequelize(connectionUri, {
+const sequelize = new Sequelize({
 	dialect: "mysql",
-	// database: process.env.DB_NAME,
-	// username: process.env.DB_USERNAME,
-	// password: process.env.DB_PASSWORD,
-	// host: process.env.DB_HOST,
-	// port: process.env.DB_PORT,
+	database: process.env.DB_NAME,
+	username: process.env.DB_USERNAME,
+	password: process.env.DB_PASSWORD,
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
 	logging: false,
 
-	dialectOptions: {
-		ssl: {
-			rejectUnauthorized: false,
-		},
-	},
+	// dialectOptions: {
+	// 	ssl: {
+	// 		rejectUnauthorized: false,
+	// 	},
+	// },
 });
 module.exports = sequelize;
