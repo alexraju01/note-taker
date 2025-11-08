@@ -20,7 +20,7 @@ const sequelize = new Sequelize(connectionUri, {
 
 	dialectOptions: {
 		ssl: {
-			rejectUnauthorized: false,
+			rejectUnauthorized: true,
 		},
 	},
 });
