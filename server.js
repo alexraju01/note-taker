@@ -13,8 +13,9 @@ const startServer = async () => {
 		console.log("Models synchronized.");
 
 		const { PORT } = process.env;
-		app.listen(PORT, () => {
-			console.log(` Server is running at http://localhost:${PORT}`);
+		// Explicitly listen on '0.0.0.0' for Render/cloud deployment compatibility
+		app.listen(PORT, "0.0.0.0", () => {
+			console.log(` Server is running at http://0.0.0.0:${PORT}`);
 		});
 	} catch (error) {
 		console.error(" Database connection failed:", error);
