@@ -1,5 +1,5 @@
 export const fetchData = async (method = "GET", data = null, endpoint = "notes") => {
-	const url = `http://localhost:8000/api/v1/${endpoint}`;
+	const url = `/api/v1/${endpoint}`;
 
 	const config = {
 		method,
