@@ -15,7 +15,7 @@ const startServer = async () => {
 		const { PORT } = process.env;
 		// Explicitly listen on '0.0.0.0' for Render/cloud deployment compatibility
 		app.listen(PORT, "0.0.0.0", () => {
-			console.log(` Server is running at http://0.0.0.0:${PORT}`);
+			console.log(` Server is running at http://localhost:${PORT}`);
 		});
 	} catch (error) {
 		console.error(" Database connection failed:", error);
