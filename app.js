@@ -6,12 +6,12 @@ const notesRouter = require("./routes/noteRoutes");
 const morgan = require("morgan");
 const AppError = require("./utility/appError");
 const globalErrorHandler = require("./controllers/errorController");
-const cors = require("cors");
+// const cors = require("cors");
 
 // MIDDLEWARE
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
 app.use(express.static("public"));
 app.use(favicon(path.join(__dirname, "public/images", "favicon.ico")));
 
